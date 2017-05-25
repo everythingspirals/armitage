@@ -10,6 +10,13 @@ class ETH_BTC extends Strategy {
         return 'ETH_BTC';
     }
 
+    get strategy(){
+        return {
+            forward: 'eth_btc',
+            backward: 'btc_eth'
+        }
+    }
+
     get exchanges() {
         return [
             {
@@ -23,20 +30,20 @@ class ETH_BTC extends Strategy {
         ]
     }
 
-    get arbitrate(){
-        let eth_btc = Math.max(
-            shapeshift.rates.eth_btc,
-            gemini.rates.eth_btc,
-        );
+    // get arbitrate(){
+    //     let eth_btc = Math.max(
+    //         shapeshift.rates.eth_btc,
+    //         gemini.rates.eth_btc,
+    //     );
 
-        let btc_eth = Math.max(
-            shapeshift.rates.eth_btc,
-            gemini.rates.eth_btc,
-        );
+    //     let btc_eth = Math.max(
+    //         shapeshift.rates.eth_btc,
+    //         gemini.rates.eth_btc,
+    //     );
 
-        let gain = eth_btc * btc_eth - 1;
-        return gain;
-    }
+    //     let gain = eth_btc * btc_eth - 1;
+    //     return gain;
+    // }
 }
 
 export default ETH_BTC;
